@@ -1,6 +1,8 @@
-- name: Hello World Sample
-  hosts: all
-  tasks:
-    - name: Hello Message
-      debug:
-        msg: "Hello World!"
+---
+- hosts: Linux_Servers
+   
+  tasks: 
+  - name: Install ADCLI
+    yum:
+     name: adcli
+     state: latest
