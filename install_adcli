@@ -1,0 +1,8 @@
+---
+- hosts: Linux_Servers
+   
+  tasks: 
+  - name: Install ADCLI
+    yum:
+     name: adcli
+     state: latest
