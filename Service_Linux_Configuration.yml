@@ -5,7 +5,7 @@
   - name: Install additional software
     yum:
      name: sssd* samba-common-tools oddjob oddjob-mkhomedir adcli krb5-workstation openldap-clients
-     state: Installed
+     state: installed
   
   - name: Copy Kerberos configuration file to new Linux installation
     copy:
