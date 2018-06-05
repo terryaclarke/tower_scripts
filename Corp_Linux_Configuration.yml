@@ -2,12 +2,12 @@
 - hosts: New_Linux_Servers
    
   tasks: 
-- name: Install additional software
+- name Install additional software
     yum:
      name: sssd samba-common-tools oddjob oddjob-mkhomedir adcli krb5-workstation openldap-clients 
      state: present
   
-  - name: Copy Kerberos configuration file to new Linux installation
+- name Copy Kerberos configuration file to new Linux installation
   copy:
     src: /var/lib/awx/projects/files_to_download/corp_domain/corp.krb5.conf
     dest: /etc/krb5.conf
