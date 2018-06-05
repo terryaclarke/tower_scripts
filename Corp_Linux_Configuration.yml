@@ -3,7 +3,7 @@
    
   tasks: 
 - name Install additional software
-    yum:
+    yum
      name: sssd samba-common-tools oddjob oddjob-mkhomedir adcli krb5-workstation openldap-clients 
      state: present
   
