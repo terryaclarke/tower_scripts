@@ -7,32 +7,37 @@
      name: sssd samba-common-tools oddjob oddjob-mkhomedir adcli krb5-workstation openldap-clients 
      state: present
   
-- name: Copy configuration files to new Linux installation
+- name: Copy Kerberos configuration file to new Linux installation
   copy:
     src: /var/lib/awx/projects/files_to_download/corp_domain/corp.krb5.conf
     dest: /etc/krb5.conf
     backup: yes
     
+- name: Copy Chrony configuration file to new Linux installation
   copy:
     src: /var/lib/awx/projects/files_to_download/corp_domain/corp.chrony.conf
     dest: /etc/chrony.conf
     backup: yes
     
-  copy:
+- name: Copy LDAP configuration file to new Linux installation
+    copy:
     src: /var/lib/awx/projects/files_to_download/corp_domain/corp.ldap.conf
     dest: /etc/ldap.conf
     backup: yes  
     
+- name: Copy realmd configuration file to new Linux installation
   copy:
     src: /var/lib/awx/projects/files_to_download/corp_domain/corp.realmd.conf
     dest: /etc/realmd.conf
     backup: yes    
     
+- name: Copy Samba configuration file to new Linux installation
   copy:
     src: /var/lib/awx/projects/files_to_download/corp_domain/corp.smb.conf
     dest: /etc/samba/smb.conf
     backup: yes
     
+- name: Copy Sudoers configuration file to new Linux installation
   copy:
     src: /var/lib/awx/projects/files_to_download/corp_domain/corp.sudoers
     dest: /etc/corp.sudoers
