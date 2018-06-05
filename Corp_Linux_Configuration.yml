@@ -4,67 +4,67 @@
   tasks: 
 - name Install additional software
     yum
-     name: sssd samba-common-tools oddjob oddjob-mkhomedir adcli krb5-workstation openldap-clients 
-     state: present
+     name sssd samba-common-tools oddjob oddjob-mkhomedir adcli krb5-workstation openldap-clients 
+     state present
   
 - name Copy Kerberos configuration file to new Linux installation
-  copy:
-    src: /var/lib/awx/projects/files_to_download/corp_domain/corp.krb5.conf
-    dest: /etc/krb5.conf
-    backup: yes
+  copy
+    src /var/lib/awx/projects/files_to_download/corp_domain/corp.krb5.conf
+    dest /etc/krb5.conf
+    backup yes
     
-- name: Copy Chrony configuration file to new Linux installation
-  copy:
-    src: /var/lib/awx/projects/files_to_download/corp_domain/corp.chrony.conf
-    dest: /etc/chrony.conf
-    backup: yes
+- name Copy Chrony configuration file to new Linux installation
+  copy
+    src /var/lib/awx/projects/files_to_download/corp_domain/corp.chrony.conf
+    dest /etc/chrony.conf
+    backup yes
     
-- name: Copy LDAP configuration file to new Linux installation
-    copy:
-    src: /var/lib/awx/projects/files_to_download/corp_domain/corp.ldap.conf
-    dest: /etc/ldap.conf
-    backup: yes  
+- name Copy LDAP configuration file to new Linux installation
+    copy
+    src /var/lib/awx/projects/files_to_download/corp_domain/corp.ldap.conf
+    dest /etc/ldap.conf
+    backup yes  
     
-- name: Copy realmd configuration file to new Linux installation
-  copy:
-    src: /var/lib/awx/projects/files_to_download/corp_domain/corp.realmd.conf
-    dest: /etc/realmd.conf
-    backup: yes    
+- name Copy realmd configuration file to new Linux installation
+  copy
+    src /var/lib/awx/projects/files_to_download/corp_domain/corp.realmd.conf
+    dest /etc/realmd.conf
+    backup yes    
     
-- name: Copy Samba configuration file to new Linux installation
-  copy:
-    src: /var/lib/awx/projects/files_to_download/corp_domain/corp.smb.conf
-    dest: /etc/samba/smb.conf
-    backup: yes
+- name Copy Samba configuration file to new Linux installation
+  copy
+    src /var/lib/awx/projects/files_to_download/corp_domain/corp.smb.conf
+    dest /etc/samba/smb.conf
+    backup yes
     
-- name: Copy Sudoers configuration file to new Linux installation
-  copy:
-    src: /var/lib/awx/projects/files_to_download/corp_domain/corp.sudoers
-    dest: /etc/corp.sudoers
-    backup: yes  
+- name Copy Sudoers configuration file to new Linux installation
+  copy
+    src /var/lib/awx/projects/files_to_download/corp_domain/corp.sudoers
+    dest /etc/corp.sudoers
+    backup yes  
     
-- name: Disable SElinux
-   command: sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
-   command: setenforce 0
+- name Disable SElinux
+   command sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
+   command setenforce 0
 
-- name: Disable Firewall
-   command: systemctl stop firewalld
-   command: systemctl disable firewalld
+- name Disable Firewall
+   command systemctl stop firewalld
+   command systemctl disable firewalld
 
-- name: Remove virtual NIC
-   command: systemctl stop libvirtd
-   command: systemctl disable libvirtd
+- name Remove virtual NIC
+   command systemctl stop libvirtd
+   command systemctl disable libvirtd
 
-- name: configure sshd
-   command: sed -i 's/#AddressFamily any/AddressFamily inet/g' /etc/ssh/sshd_config
+- name configure sshd
+   command sed -i 's/#AddressFamily any/AddressFamily inet/g' /etc/ssh/sshd_config
 
-- name: configure snmp
-   command: sed -i 's/com2sec notConfigUser  default       public/com2sec notConfigUser  default       qwerty7/g' /etc/snmp/snmpd.conf
-   command: systemctl restart snmpd
+- name configure snmp
+   command sed -i 's/com2sec notConfigUser  default       public/com2sec notConfigUser  default       qwerty7/g' /etc/snmp/snmpd.conf
+   command systemctl restart snmpd
 
-- name: Create cls alias
-   command: echo "alias cls=clear" >> /etc/profile
+- name Create cls alias
+   command echo "alias cls=clear" >> /etc/profile
 
-- name: Configure Authconfig
-   command: authconfig --disablesmartcard --disablefingerprint --update
+- name Configure Authconfig
+   command authconfig --disablesmartcard --disablefingerprint --update
 
