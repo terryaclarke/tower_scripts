@@ -7,63 +7,76 @@
      name: sssd samba-common-tools oddjob oddjob-mkhomedir adcli krb5-workstation openldap-clients
      state: installed
   
+  tasks: 
   - name: Copy Kerberos configuration file to new Linux installation
     copy:
      src: /var/lib/awx/projects/files_to_download/services_domain/services.krb5.conf
      dest: /etc/krb5.conf
      backup: yes
-    
+  
+  tasks: 
   - name: Copy Chrony configuration file to new Linux installation
     copy:
      src: /var/lib/awx/projects/files_to_download/services_domain/services.chrony.conf
      dest: /etc/chrony.conf
      backup: yes
-    
+  
+  tasks: 
   - name: Copy LDAP configuration file to new Linux installation
     copy:
      src: /var/lib/awx/projects/files_to_download/services_domain/services.ldap.conf
      dest: /etc/ldap.conf
      backup: yes  
-    
+  
+  tasks: 
   - name: Copy realmd configuration file to new Linux installation
     copy:
      src: /var/lib/awx/projects/files_to_download/services_domain/services.realmd.conf
      dest: /etc/realmd.conf
      backup: yes    
-    
+  
+  tasks: 
   - name: Copy Samba configuration file to new Linux installation
     copy:
      src: /var/lib/awx/projects/files_to_download/services_domain/services.smb.conf
      dest: /etc/samba/smb.conf
      backup: yes
-    
+  
+  tasks: 
   - name: Copy Sudoers configuration file to new Linux installation
     copy:
     src: /var/lib/awx/projects/files_to_download/services_domain/services.sudoers
     dest: /etc/services.sudoers
     backup: yes  
-    
+  
+  tasks: 
   - name: Disable SElinux
     command: sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
     command: setenforce 0
-
+  
+  tasks: 
   - name: Disable Firewall
     command: systemctl stop firewalld
     command: systemctl disable firewalld
 
+  tasks: 
   - name: Remove virtual NIC
     command: systemctl stop libvirtd
     command: systemctl disable libvirtd
 
+  tasks: 
   - name: configure sshd
     command: sed -i 's/#AddressFamily any/AddressFamily inet/g' /etc/ssh/sshd_config
 
+  tasks: 
   - name: configure snmp
     command: sed -i 's/com2sec notConfigUser  default       public/com2sec notConfigUser  default       qwerty7/g' /etc/snmp/snmpd.conf
     command: systemctl restart snmpd
 
+  tasks: 
   - name: Create cls alias
     command: echo "alias cls=clear" >> /etc/profile
 
+  tasks: 
   - name: Configure Authconfig
     command: authconfig --disablesmartcard --disablefingerprint --update
