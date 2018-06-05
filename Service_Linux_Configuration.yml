@@ -75,7 +75,7 @@
 
   tasks: 
   - name: Create cls alias
-    command: echo "alias cls=clear" >> /etc/profile
+    command: echo alias cls=clear >> /etc/profile
 
   tasks: 
   - name: Configure Authconfig
