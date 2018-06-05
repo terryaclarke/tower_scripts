@@ -38,28 +38,28 @@
     dest: /etc/corp.sudoers
     backup: yes  
     
- #Disable SElinux
-sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
-setenforce 0
+- name: Disable SElinux
+   command: sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
+   command: setenforce 0
 
-#Disable Firewall
-systemctl stop firewalld
-systemctl disable firewalld
+- name: Disable Firewall
+   command: systemctl stop firewalld
+   command: systemctl disable firewalld
 
-#Remove virtual NIC
-systemctl stop libvirtd
-systemctl disable libvirtd
+- name: Remove virtual NIC
+   command: systemctl stop libvirtd
+   command: systemctl disable libvirtd
 
-#configure sshd
-sed -i 's/#AddressFamily any/AddressFamily inet/g' /etc/ssh/sshd_config
+- name: configure sshd
+   command: sed -i 's/#AddressFamily any/AddressFamily inet/g' /etc/ssh/sshd_config
 
-#configure snmp
-sed -i 's/com2sec notConfigUser  default       public/com2sec notConfigUser  default       qwerty7/g' /etc/snmp/snmpd.conf
-systemctl restart snmpd
+- name: configure snmp
+   command: sed -i 's/com2sec notConfigUser  default       public/com2sec notConfigUser  default       qwerty7/g' /etc/snmp/snmpd.conf
+   command: systemctl restart snmpd
 
-echo "alias cls=clear" >> /etc/profile
+- name: Create cls alias
+   command: echo "alias cls=clear" >> /etc/profile
 
-authconfig --disablesmartcard --disablefingerprint --update
+- name: Configure Authconfig
+   command: authconfig --disablesmartcard --disablefingerprint --update
 
-#Create custom.sh files
-echo "alias cls=clear" >> /etc/profile.d/custom.sh
