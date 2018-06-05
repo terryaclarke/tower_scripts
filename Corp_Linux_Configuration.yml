@@ -3,22 +3,22 @@
    
   tasks: 
   
-- name Install additional software
-    yum
-     name sssd samba-common-tools oddjob oddjob-mkhomedir adcli krb5-workstation openldap-clients 
-     state present
+- name: Install additional software
+    yum:
+     name: sssd samba-common-tools oddjob oddjob-mkhomedir adcli krb5-workstation openldap-clients 
+     state: present
   
-- name Copy Kerberos configuration file to new Linux installation
-  copy
-    src /var/lib/awx/projects/files_to_download/corp_domain/corp.krb5.conf
-    dest /etc/krb5.conf
-    backup yes
+- name: Copy Kerberos configuration file to new Linux installation
+  copy:
+    src: /var/lib/awx/projects/files_to_download/corp_domain/corp.krb5.conf
+    dest: /etc/krb5.conf
+    backup: yes
     
-- name Copy Chrony configuration file to new Linux installation
-  copy
-    src /var/lib/awx/projects/files_to_download/corp_domain/corp.chrony.conf
-    dest /etc/chrony.conf
-    backup yes
+- name: Copy Chrony configuration file to new Linux installation
+  copy:
+    src: /var/lib/awx/projects/files_to_download/corp_domain/corp.chrony.conf
+    dest: /etc/chrony.conf
+    backup: yes
     
 - name Copy LDAP configuration file to new Linux installation
     copy
