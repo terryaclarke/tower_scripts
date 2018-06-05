@@ -1,5 +1,5 @@
 ---
-- hosts: New_Linux_Servers
+- hosts: New_Linux_Servers(Corp_Domain)
    
   tasks: 
   - name: Install additional software
