@@ -1,5 +1,6 @@
 ---
 - hosts: New_Linux_Servers(Services_Domain)
+  gather_facts: no
    
   tasks: 
   - name: Install additional software
