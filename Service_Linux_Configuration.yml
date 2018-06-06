@@ -47,6 +47,6 @@
   - name: Copy Sudoers configuration file to new Linux installation
     copy:
     src: /var/lib/awx/projects/files_to_download/services_domain/services.sudoers
-    dest: /etc/services.sudoers
+    dest: /etc/sudoers
     backup: yes  
 
