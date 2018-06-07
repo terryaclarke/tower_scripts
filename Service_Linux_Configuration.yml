@@ -5,18 +5,4 @@
   - name: Install additional software
     yum:
      name: sssd samba-common-tools oddjob oddjob-mkhomedir adcli krb5-workstation openldap-clients
-     state: present  
-
-  tasks:
-   - name: Install additional software
-     yum:
-      name: "{{ item }}"
-      state: present
-    with_items:
-     - sssd
-     - samba-common-tools
-     - oddjob
-     - oddjobmkhomedir
-     - adcli
-     - krb5-workstation
-     - openldap-clients
+     state: present
