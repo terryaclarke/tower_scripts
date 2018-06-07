@@ -1,8 +1,7 @@
 ---
 - hosts: New_Linux_Servers(Services_Domain)
-   
-  tasks:
 
+tasks:
   - name: Install additional software
     yum:
       name: "{{ item }}"
