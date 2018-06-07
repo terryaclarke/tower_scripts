@@ -10,7 +10,7 @@ tasks:
     - sssd
     - samba-common-tools
     - oddjob
-    - oddjobmkhoemdir
+    - oddjobmkhomedir
     - adcli
     - krb5-workstation
     - openldap-clients
