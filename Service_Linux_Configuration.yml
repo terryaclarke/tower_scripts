@@ -1,9 +1,17 @@
 ---
 - hosts: New_Linux_Servers(Services_Domain)
-  gather_facts: no
    
-  tasks: 
+  tasks:
+
   - name: Install additional software
     yum:
-     name: sssd samba-common-tools oddjob oddjob-mkhomedir adcli krb5-workstation openldap-clients
-     state: present  
+      name: "{{ item }}"
+      state: present
+    with_items:
+    - sssd
+    - samba-common-tools
+    - oddjob
+    - oddjobmkhoemdir
+    - adcli
+    - krb5-workstation
+    - openldap-clients
